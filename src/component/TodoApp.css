@@ -9,7 +9,6 @@ body{
 }
 .todo-container{
     
-   
     width: 400px;
     position: absolute;
     left: 50%;
@@ -68,7 +67,8 @@ input::placeholder{
     color: silver;
     border: solver;
 }
-i{
+ul li i{
     text-align: right;
     flex: 1;
+    cursor: pointer;
 }
