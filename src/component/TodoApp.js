@@ -4,7 +4,7 @@ import "./TodoApp.css";
 class TodoApp extends Component {
   state = {
     input: "",
-    itmes:[]
+    items:[]
   };
   onHandleChange = (event) => {
     this.setState({
@@ -17,24 +17,23 @@ class TodoApp extends Component {
     const { input } = this.state; 
     
     this.setState({
-      itmes:[...this.state.itmes,input],
+      items:[...this.state.items,input],
       input:""
     })
   };
 
   deletItem= key =>{
-    const allItems=this.state.itmes
-    allItems.splice(key,1);
+    
     
     this.setState({
-      itmes:allItems
-    })
+      items:this.state.items.filter((data,index)=> index!==key)
+    });
 
   }
  
   render() {
-    const { input,itmes } = this.state;
-    console.log(itmes);
+    const { input,items } = this.state;
+    console.log(items);
     return (
       <div className="todo-container">
         <form className="input-section" onSubmit={this.storeItems}>
@@ -50,7 +49,7 @@ class TodoApp extends Component {
 
         <ul>
         
-            {itmes.map((data,index)=>(
+            {items.map((data,index)=>(
               <li key={index}>{data}<i onClick={()=>this.deletItem(index)} className="fa-solid fa-trash"></i></li>
             ))}
        
